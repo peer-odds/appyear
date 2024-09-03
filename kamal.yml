@@ -1,0 +1,18 @@
+deploy:
+  stages:
+    production:
+      server:
+        address: 3.106.240.194
+        user: ec2-user
+        key: ~/.ssh/id_ed25519
+      application:
+        name: appyear
+        repo: git@github.com:your-repo/your-app.git
+        branch: main
+        # Optional: Configure any environment-specific settings here
+        env:
+          RAILS_ENV: production
+          # Add any other environment variables here
+      deployment:
+        strategy: rolling # or 'blue-green' if you prefer
+        # Define any additional deployment options here
