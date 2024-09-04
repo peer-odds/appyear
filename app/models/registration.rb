@@ -1,3 +1,2 @@
-class RegistrationsController < ApplicationController
-    
+class Registration < ApplicationRecord
 end
