@@ -1,5 +1,9 @@
 class RegistrationsController < ApplicationController
+
   private 
+  def new
+    @registration = Registration.new
+  end
   def create 
     @registration = Registration.create(registration_params)
     if @registration.save
