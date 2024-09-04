@@ -1,17 +1,22 @@
 class RegistrationsController < ApplicationController
-
-  private 
+  def index
+    @registrations = Registration.all
+  end
   def new
+    puts "new"
     @registration = Registration.new
   end
   def create 
-    @registration = Registration.create(registration_params)
-    if @registration.save
-      render json: @registration
-    else
-      render json: @registration.errors, status: :unprocessable_entity
-    end
+    puts "create"
+    @registration = Registration.new(registration_params)
+      if @registration.save
+        redirect_to root_path
+      else
+        redirect_to root_path
+      end
   end
+
+  private 
   def registration_params
     params.require(:registration).permit(:first_name, :last_name, :dob, :gender, :email, :phone, :subject)
   end
