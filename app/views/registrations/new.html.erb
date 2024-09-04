@@ -1,38 +1,65 @@
 <div class="container">
 
     <%= form_with(model: @registration,local: true) do |form| %>
-        <h1>Registrations Form</h1>
+        
+            <div class="field header">
+                <div class="row">
+                    <h1>Registrations Form</h1>
+                </div>
+            </div>
         <div class="row">
-            <%= form.label :first_name, style: "display: block" %>
-            <%= form.text_field :first_name %>
+            <div class="field">
+                <%= form.label :first_name,"First Name" , style: "display: block" %>
+                <%= form.text_field :first_name ,class: "custom-field"%>
+            </div>
 
-            <%= form.label :last_name, style: "display: block" %>
-            <%= form.text_field :last_name %>
+            <div class="field">
+                <%= form.label :last_name, "Last Name",style: "display: block" %>
+                <%= form.text_field :last_name ,class: "custom-field"%>
+            </div>
         </div>
         <div class="row">
-            <%= form.label :birthday, style: "display : block" %>
-            <%= form.date_field :dob %>
+            <div class="field">
+                <%= form.label :birthday, style: "display : block" %>
+                <%= form.date_field :dob ,class: "custom-field", max: Date.today.to_s%>
+            </div>
 
-            <%= form.label :gender, style: "display : block" %>
-                <%= form.radio_button :gender, "male" %>
-                <%= form.label :gender_male, "Male" %>
-                <%= form.radio_button :gender, "female" %>
-                <%= form.label :gender_female, "Female" %>
+            <div class="field">
+                <%= form.label :gender, style: "display : block" %>
+                <div class="row">
+                    <div class="radio">
+                    <%= form.radio_button :gender, "male" %>
+                    <%= form.label :gender_male, "Male" %>
+                    </div>
+                    <div class="radio">
+                    <%= form.radio_button :gender, "female" %>
+                    <%= form.label :gender_female, "Female" %>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
-            <%= form.label :email, style: "display: block" %>
-            <%= form.text_field :email %>
+            <div class="field">
+                <%= form.label :email, style: "display: block" %>
+                <%= form.text_field :email %>
+            </div>
 
-            <%= form.label :phone_number, style: "display: block" %>
-            <%= form.text_field :phone %>
+            <div class="field">
+                <%= form.label :phone_number,"Phone Number", style: "display: block" %>
+                <%= form.text_field :phone %>
+            </div>
         </div>
 
         <div class="row">
-            <%= form.label :subject,style: "display: block" %>
-            <%= form.select :subject, options_for_select(["RoR","RoV","Agile","Scum","Software Development","ODDS"]) %>
+            <div class="field subject">
+                <%= form.label :subject,style: "display: block" %>
+                <%= form.select :subject, options_for_select(["RoR","RoV","Agile","Scum","Software Development","ODDS"]) %>
+            </div>
         </div>
         <div class="row">
-            <%= form.submit "Submit"%>
+            <div class="field">
+                <%= form.submit "Submit", class: "submit"%>
+            </div>
         </div>
     <% end %>
 
