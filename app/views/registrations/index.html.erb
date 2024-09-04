@@ -4,8 +4,7 @@
         <div class="card">
             <%= registration.first_name %>
             <div class="action">
-                <%= link_to 'Edit', edit_registration_path(registration), class: "btn btn-secondary" %>
-                <%= link_to 'Delete', registration_path(registration), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+                <%= button_to 'Delete', registration_path(registration), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
             </div>
         </div>
     <% end %>

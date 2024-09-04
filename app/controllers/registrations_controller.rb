@@ -6,6 +6,12 @@ class RegistrationsController < ApplicationController
     puts "new"
     @registration = Registration.new
   end
+  def destroy
+    puts "destroy"
+    @registration = Registration.find(params[:id])
+    @registration.destroy
+    redirect_to root_path
+  end
   def create 
     puts "create"
     @registration = Registration.new(registration_params)
