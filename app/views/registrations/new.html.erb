@@ -1,36 +1,39 @@
+<div class="container">
 
-<%= form_with(model: @registration) do |form| %>
-    <h1>Registrations Form</h1>
-    <div class="row">
-        <%= form.label :first_name, style: "display: block" %>
-        <%= form.text_field :first_name %>
+    <%= form_with(model: @registration,local: true) do |form| %>
+        <h1>Registrations Form</h1>
+        <div class="row">
+            <%= form.label :first_name, style: "display: block" %>
+            <%= form.text_field :first_name %>
 
-        <%= form.label :last_name, style: "display: block" %>
-        <%= form.text_field :last_name %>
-    </div>
-    <div class="row">
-        <%= form.label :Birthday, style: "display : block" %>
-        <%= form.date_field :dob %>
+            <%= form.label :last_name, style: "display: block" %>
+            <%= form.text_field :last_name %>
+        </div>
+        <div class="row">
+            <%= form.label :birthday, style: "display : block" %>
+            <%= form.date_field :dob %>
 
-        <%= form.label :Gender, style: "display : block" %>
-            <%= form.radio_button :gender, "male" %>
-            <%= form.label :gender_male, "Male" %>
-            <%= form.radio_button :gender, "female" %>
-            <%= form.label :gender_female, "Female" %>
-    </div>
-    <div class="row">
-        <%= form.label :Email, style: "display: block" %>
-        <%= form.text_field :email %>
+            <%= form.label :gender, style: "display : block" %>
+                <%= form.radio_button :gender, "male" %>
+                <%= form.label :gender_male, "Male" %>
+                <%= form.radio_button :gender, "female" %>
+                <%= form.label :gender_female, "Female" %>
+        </div>
+        <div class="row">
+            <%= form.label :email, style: "display: block" %>
+            <%= form.text_field :email %>
 
-        <%= form.label :Phone_Number, style: "display: block" %>
-        <%= form.text_field :phone %>
-    </div>
+            <%= form.label :phone_number, style: "display: block" %>
+            <%= form.text_field :phone %>
+        </div>
 
-    <div class="row">
-        <%= form.label :Subject,style: "display: block" %>
-        <%= form.select :subject, options_for_select(["RoR","RoV","Agile","Scum","Software Development","ODDS"]) %>
-    </div>
-    <div class="row">
-        <%= form.submit "Submit"%>
-    </div>
-<% end %>
+        <div class="row">
+            <%= form.label :subject,style: "display: block" %>
+            <%= form.select :subject, options_for_select(["RoR","RoV","Agile","Scum","Software Development","ODDS"]) %>
+        </div>
+        <div class="row">
+            <%= form.submit "Submit"%>
+        </div>
+    <% end %>
+
+</div>
