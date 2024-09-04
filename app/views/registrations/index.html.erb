@@ -1,7 +1,13 @@
-<dic id="regiatrations">
+<div class="list" >
     <h1>User Registered</h1>
     <% @registrations.each do |registration| %>
-        <%= registration.first_name %>
+        <div class="card">
+            <%= registration.first_name %>
+            <div class="action">
+                <%= link_to 'Edit', edit_registration_path(registration), class: "btn btn-secondary" %>
+                <%= link_to 'Delete', registration_path(registration), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            </div>
+        </div>
     <% end %>
-    <%= link_to 'Register', new_registration_path %>
+    <%= link_to 'Register', new_registration_path , class: "btn"%>
 </div>
