@@ -39,13 +39,14 @@ jobs:
                     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
             - name: Docker login
-              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}'
+              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}'
+              
             - name: Build Docker compose
-              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && docker compose -f docker-compose-dev.yml pull'
+              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && sudo docker-compose pull'
             
             - name: Run Docker compose
-              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && docker compose -f docker-compose-dev.yml up -d'
+              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && sudo docker-compose  up -d'
                   
             - name: clear docker image
-              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && docker image prune -f'
+              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && sudo docker image prune -f'
             
