@@ -1,5 +1,6 @@
 name: Build image
-
+env:
+    DEPLOY_PATH: ~/home/ec2-user/appyear
 on: 
     push:
         branches:
@@ -28,3 +29,23 @@ jobs:
                   push: true
                   tags: ${{ secrets.DOCKER_USERNAME }}/appyear:latest
                   platforms: linux/arm64,linux/amd64
+    deploy: 
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+            - name: ssh to server
+              uses: webfactory/ssh-agent@v0.5.3
+              with:
+                    ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+            - name: Docker login
+              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}'
+            - name: Build Docker compose
+              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && docker compose -f docker-compose-dev.yml pull'
+            
+            - name: Run Docker compose
+              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && docker compose -f docker-compose-dev.yml up -d'
+                  
+            - name: clear docker image
+              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && docker image prune -f'
+            
