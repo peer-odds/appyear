@@ -1,23 +1,24 @@
-.list {
+.card {
+    
     border-radius: 0.5rem;
     padding: 4rem;
     background-color: white;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin: 2rem 0;
+    @media screen and (max-width: 600px){
+        /* min-width: 90vw; */
+        max-width: 90%;
+        padding: 2rem;
+    }
 }
 
-.card{
+.list{
+    text-align: center;
     display: flex;
     justify-content: space-between;
 }
-.btn {
-    /* max-width: 50%; */
-   /* margin-top: 1rem; */
-   border-radius: 0.5rem;
-   border: none;
-   background-color: rgb(84, 101, 255);
-   padding:  0.5rem 2rem;
-   color: white;
+.link:hover{
+    text-decoration: underline;
 }

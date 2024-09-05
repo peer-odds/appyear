@@ -1,8 +1,10 @@
-<div class="list" >
+<div class="card" >
     <h1>User Registered</h1>
     <% @registrations.each do |registration| %>
-        <div class="card">
-            <%= registration.first_name %>
+        <div class="list">
+            <div class="link">
+                <%= registration.first_name %>
+            </div>
             <div class="action">
                 <%= button_to 'Delete', registration_path(registration), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
             </div>

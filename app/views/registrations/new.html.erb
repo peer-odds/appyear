@@ -26,7 +26,7 @@
 
             <div class="field">
                 <%= form.label :gender, style: "display : block" %>
-                <div class="row">
+                <div class="row inline">
                     <div class="radio">
                     <%= form.radio_button :gender, "male" %>
                     <%= form.label :gender_male, "Male" %>
@@ -58,7 +58,7 @@
         </div>
         <div class="row">
             <div class="field">
-                <%= form.submit "Submit", class: "submit"%>
+                <%= form.submit "Submit", class: "submit btn"%>
             </div>
         </div>
     <% end %>
