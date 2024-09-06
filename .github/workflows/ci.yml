@@ -41,7 +41,11 @@ jobs:
               run: ssh-add -l
               
             - name: Add remote host to known hosts
-              run: ssh-keyscan -H 13.237.137.147 >> ~/.ssh/known_hosts
+              run: ssh-keyscan -H ${{secrets.HOST_IP}} >> ~/.ssh/known_hosts
+
+            - name: Debug SSH Connection
+              run: ssh -vvv -o StrictHostKeyChecking=no ${{ secrets.HOST_NAME }}@${{secrets.HOST_IP}} "echo 'SSH debug successful'"
+        
 
             - name: Docker login
               run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ghcr.io -u ${{ secrets.DOCKER_USERNAME }} --password-stdin'
