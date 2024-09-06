@@ -1,6 +1,6 @@
 name: Build image
 env:
-    DEPLOY_PATH: ~/home/ec2-user/appyear
+    DEPLOY_PATH: ~/appyear
 on: 
     push:
         branches:
