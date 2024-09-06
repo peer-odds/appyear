@@ -44,14 +44,14 @@ jobs:
               run: ssh-keyscan -H 13.237.137.147 >> ~/.ssh/known_hosts
 
             - name: Docker login
-              run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ghcr.io -u ${{ secrets.DOCKER_USERNAME }} --password-stdin'
+              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ghcr.io -u ${{ secrets.DOCKER_USERNAME }} --password-stdin'
               
             - name: Build Docker compose
-              run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && sudo docker-compose pull'
+              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && sudo docker-compose pull'
             
             - name: Run Docker compose
-              run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && sudo docker-compose  up -d'
+              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && sudo docker-compose  up -d'
                   
             - name: clear docker image
-              run: ssh --i ~/.ssh/id_rsa o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && sudo docker image prune -f'
+              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && sudo docker image prune -f'
             
