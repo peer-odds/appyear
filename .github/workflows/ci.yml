@@ -40,8 +40,8 @@ jobs:
                 chmod 400 ~/.ssh/id_rsa  # Use stricter permissions
                 ssh-keyscan -H 13.237.137.147 >> ~/.ssh/known_hosts
 
-            - name: Docker login
-              run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ghcr.io -u ${{ secrets.DOCKER_USERNAME }} --password-stdin'
+            # - name: Docker login
+            #   run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ghcr.io -u ${{ secrets.DOCKER_USERNAME }} --password-stdin'
               
             - name: Build Docker compose
               run: ssh -o StrictHostKeyChecking=no ${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && sudo docker-compose pull'
