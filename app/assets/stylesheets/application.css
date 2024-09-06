@@ -48,7 +48,7 @@ body {
    width: 100%;
    /* height: 100vh; */
    min-height: 100vh;
-   background-image: linear-gradient(to bottom, #9b4376, #c04477);
+   /* background-image: linear-gradient(to bottom, #a904f5, #0cb1f3); */
    display: flex;
    justify-content: center;
    align-items: center;
@@ -74,6 +74,7 @@ body {
 }
 .header{
    width: 100%;
+   /* animation: text-rainbow 10s infinite; */
 }
 form{
    width: 100%;
@@ -98,3 +99,99 @@ form{
 .btn-danger{
    background-color: rgb(255, 84, 84);
 }
+
+
+/* for background */
+body {
+   margin: auto;
+   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+   overflow: auto;
+   background: linear-gradient(315deg, rgb(192, 0, 251) 3%, rgba(60,132,206,1) 38%, rgb(0, 214, 200) 68%, rgb(244, 54, 218) 98%);
+   animation: gradient 15s ease infinite;
+   background-size: 400% 400%;
+   background-attachment: fixed;
+}
+
+@keyframes gradient {
+   0% {
+       background-position: 0% 0%;
+   }
+   50% {
+       background-position: 100% 100%;
+   }
+   100% {
+       background-position: 0% 0%;
+   }
+}
+
+.wave {
+   background: rgb(255 255 255 / 25%);
+   border-radius: 1000% 1000% 0 0;
+   position: fixed;
+   width: 200%;
+   height: 12em;
+   animation: wave 10s -3s linear infinite;
+   transform: translate3d(0, 0, 0);
+   opacity: 0.8;
+   bottom: 0;
+   left: 0;
+   z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+   bottom: -1.25em;
+   animation: wave 18s linear reverse infinite;
+   opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+   bottom: -2.5em;
+   animation: wave 20s -1s reverse infinite;
+   opacity: 0.9;
+}
+
+@keyframes wave {
+   2% {
+       transform: translateX(1);
+   }
+
+   25% {
+       transform: translateX(-25%);
+   }
+
+   50% {
+       transform: translateX(-50%);
+   }
+
+   75% {
+       transform: translateX(-25%);
+   }
+
+   100% {
+       transform: translateX(1);
+   }
+}
+
+@keyframes rainbow {
+   0% { background-color: red; }
+   14% { background-color: orange; }
+   28% { background-color: yellow; }
+   42% { background-color: green; }
+   57% { background-color: blue; }
+   71% { background-color: indigo; }
+   85% { background-color: violet; }
+   100% { background-color: red; }
+ }
+ @keyframes text-rainbow {
+   0% { color: #FF0000; }   /* Red */
+   10% { color: #FF7F00; }  /* Orange */
+   20% { color: #FFFF00; }  /* Yellow */
+   30% { color: #7FFF00; }  /* Yellow-Green */
+   40% { color: #00FF00; }  /* Green */
+   50% { color: #00FF7F; }  /* Green-Cyan */
+   60% { color: #00FFFF; }  /* Cyan */
+   70% { color: #007FFF; }  /* Cyan-Blue */
+   80% { color: #0000FF; }  /* Blue */
+   90% { color: #7F00FF; }  /* Blue-Violet */
+   100% { color: #FF00FF; } /* Violet-Red */
+  }
