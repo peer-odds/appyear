@@ -51,7 +51,7 @@ jobs:
               run: ssh -o StrictHostKeyChecking=no ${{ secrets.HOST_NAME }}@${{secrets.HOST_IP}} 'echo ${{ secrets.DOCKER_PASSWORD }} | sudo docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin'
               
             - name: Build Docker compose
-              run: ssh -o StrictHostKeyChecking=no${{ secrets.HOST_NAME }}@${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && sudo docker-compose pull'
+              run: ssh -o StrictHostKeyChecking=no ${{ secrets.HOST_NAME }}@${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && sudo docker-compose pull'
             
             - name: Run Docker compose
               run: ssh -o StrictHostKeyChecking=no ${{ secrets.HOST_NAME }}@${{secrets.HOST_IP}} 'cd ${{ env.DEPLOY_PATH }} && sudo docker-compose  up -d'
