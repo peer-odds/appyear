@@ -3,8 +3,9 @@
     <% @registrations.each do |registration| %>
         <div class="list">
             <div class="link">
-                <%= registration.first_name %>
+                <%= link_to registration.first_name, edit_registration_path(registration),class: "link"%>
             </div>
+            
             <div class="action">
                 <%= button_to 'Delete', registration_path(registration), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
             </div>

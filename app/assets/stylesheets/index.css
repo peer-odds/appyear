@@ -1,5 +1,5 @@
 .card {
-    
+    width: 60%;
     border-radius: 0.5rem;
     padding: 4rem;
     background-color: white;
@@ -9,6 +9,7 @@
     margin: 2rem 0;
     @media screen and (max-width: 600px){
         /* min-width: 90vw; */
+        width: 70%;
         max-width: 90%;
         padding: 2rem;
     }
@@ -19,6 +20,20 @@
     display: flex;
     justify-content: space-between;
 }
+.link{
+    text-decoration: underline;
+    cursor: pointer;
+    color: black;
+}
 .link:hover{
     text-decoration: underline;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.action{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.5rem;
 }

@@ -2,6 +2,9 @@ class RegistrationsController < ApplicationController
   def index
     @registrations = Registration.all
   end
+  def edit
+    @registration = Registration.find(params[:id])
+  end
   def new
     puts "new"
     @registration = Registration.new
@@ -20,6 +23,14 @@ class RegistrationsController < ApplicationController
       else
         redirect_to root_path
       end
+  end
+  def update
+    @registration = Registration.find(params[:id])
+    if @registration.update(registration_params)
+      redirect_to root_path
+    else
+      redirect_to root_path
+    end
   end
 
   private 

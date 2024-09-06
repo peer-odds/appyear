@@ -1,19 +1,5 @@
 
-.container {
-    /* max-width: 1000px; */
-    /* max-width: 500px; */
-    padding : 4rem;
-    background-color: white;
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    @media screen and (max-width: 600px){
-        padding: 0.25rem;
-        min-width: 90%;
 
-    }
- }
  h1 {
     font-size: 32px;
  }
@@ -37,6 +23,7 @@
  }
  .header{
     width: 100%;
+    min-width: 100%;
  }
  .radio {
     display: flex;
