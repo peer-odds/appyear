@@ -7,6 +7,7 @@ class RegistrationsController < ApplicationController
   end
   def new
     puts "new"
+    @form_type = :new
     @registration = Registration.new
   end
   def destroy
@@ -20,10 +21,14 @@ class RegistrationsController < ApplicationController
     @registration = Registration.new(registration_params)
       if @registration.save
         redirect_to root_path
+        # render 
       else
-        redirect_to root_path
+        @form_type = :new
+        render :new, status: :unprocessable_entity
+
       end
-  end
+
+  end 
   def update
     @registration = Registration.find(params[:id])
     if @registration.update(registration_params)

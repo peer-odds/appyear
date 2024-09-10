@@ -1,18 +1,36 @@
 <%= form_with(model: @registration,local: true) do |form| %>    
     <div class="field header">
         <div class="row">
-                <h1><%= action_name == 'new' ? 'Registrations Form' : 'Edit Form' %></h1>
+                <h1><%= @form_type == :new ? 'Registrations Form' : 'Edit Form' %></h1>
         </div>
     </div>
     <div class="row">
         <div class="field">
             <%= form.label :first_name,"First Name" , style: "display: block" %>
             <%= form.text_field :first_name ,class: "custom-field"%>
+            <div class="field error-field show-on-small-screen">
+                <% @registration.errors[:first_name].each do |message| %>
+                    <div class="error-message"><%= message %></div>
+                <% end %>
+            </div>
         </div>
-
+        
         <div class="field">
             <%= form.label :last_name, "Last Name",style: "display: block" %>
             <%= form.text_field :last_name ,class: "custom-field"%>
+            <div class="field error-field show-on-small-screen">
+                <% @registration.errors[:last_name].each do |message| %>
+                    <div class="error-message"><%= message %></div>
+                <% end %>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="field error-field hide-on-small-screen">
+            <% @registration.errors[:name].each do |message| %>
+                <div class="error-message" ><%= message %></div>
+            <% end %>
         </div>
     </div>
     <div class="row">
@@ -20,7 +38,11 @@
             <%= form.label :birthday, style: "display : block" %>
             <%= form.date_field :dob ,class: "custom-field", max: Date.today.to_s%>
         </div>
-
+        <div class="field error-field show-on-small-screen">
+                <% @registration.errors[:dob].each do |message| %>
+                    <div class="error-message"><%= message %></div>
+                <% end %>
+            </div>
         <div class="field">
             <%= form.label :gender, style: "display : block" %>
             <div class="row inline">
@@ -34,23 +56,61 @@
                 </div>
             </div>
         </div>
+        <div class="field error-field show-on-small-screen">
+                <% @registration.errors[:gender].each do |message| %>
+                    <div class="error-message"><%= message %></div>
+                <% end %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="field error-field hide-on-small-screen">
+            <% @registration.errors[:row2].each do |message| %>
+                <div class="error-message" ><%= message %></div>
+            <% end %>
+        </div>
     </div>
     <div class="row">
         <div class="field">
             <%= form.label :email, style: "display: block" %>
-            <%= form.text_field :email %>
+            <%= form.text_field :email,class: "custom-field" %>
         </div>
-
+        <div class="field error-field show-on-small-screen">
+                <% @registration.errors[:email].each do |message| %>
+                    <div class="error-message"><%= message %></div>
+                <% end %>
+        </div>
         <div class="field">
             <%= form.label :phone_number,"Phone Number", style: "display: block" %>
-            <%= form.text_field :phone %>
+            <%= form.text_field :phone,{ class: "custom-field" }%>
+        </div>
+        <div class="field error-field show-on-small-screen">
+                <% @registration.errors[:phone].each do |message| %>
+                    <div class="error-message"><%= message %></div>
+                <% end %>
         </div>
     </div>
-
+    <div class="row">
+        <div class="field error-field hide-on-small-screen">
+            <% @registration.errors[:row3].each do |message| %>
+                <div class="error-message" ><%= message %></div>
+            <% end %>
+        </div>
+    </div>
     <div class="row">
         <div class="field subject">
             <%= form.label :subject,style: "display: block" %>
-            <%= form.select :subject, options_for_select(["RoR","RoV","Agile","Scum","Software Development","ODDS"]) %>
+            <%= form.select :subject, 
+                options_for_select(["RoR", "RoV", "Agile", "Scrum", "Software Development", "ODDS"]), 
+                { prompt: "--- Please select a subject ---" }, 
+                { class: "custom-field header" } %>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="field error-field" , style="display: block !important;">
+            <% @registration.errors[:subject].each do |message| %>
+                <div class="error-message" ><%= message %></div>
+            <% end %>
         </div>
     </div>
     <div class="row">
@@ -58,4 +118,5 @@
             <%= form.submit "Submit", class: "submit btn"%>
         </div>
     </div>
+    
 <% end %>
