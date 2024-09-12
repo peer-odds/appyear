@@ -7,9 +7,10 @@
             </div>
             
             <div class="action">
-                <%= button_to 'Delete', registration_path(registration), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+                <%= button_to 'Delete', confirm_modal_registration_path(registration), method: :get,class: "btn btn-danger" %>
             </div>
         </div>
     <% end %>
     <%= link_to 'Register', new_registration_path , class: "btn"%>
 </div>
+<%= turbo_frame_tag "modal" %>

@@ -1,0 +1,10 @@
+
+<div id="confirm_delete_modal" class="modal" data-controller="modal">
+  <div class="modal-content">
+    <h3>Are you sure you want to delete this registration?</h3>
+    <div class="button-group">
+      <%= button_to 'Confirm', registration_path(promise_user), method: :delete, data: {action: 'modal#close'}, class: 'delete-button' %>
+      <%= button_to 'Cancel', '#', data: {action: 'modal#close'}, class: 'cancel-button' %>
+    </div>
+  </div>
+</div>

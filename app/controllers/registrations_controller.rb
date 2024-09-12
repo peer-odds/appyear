@@ -11,10 +11,13 @@ class RegistrationsController < ApplicationController
     @registration = Registration.new
   end
   def destroy
-    puts "destroy"
     @registration = Registration.find(params[:id])
     @registration.destroy
     redirect_to root_path
+  end
+  def confirm_modal
+    @registration = Registration.find(params[:id])
+    render turbo_stream: turbo_stream.replace("modal", partial: "confirm_modal", locals: { promise_user: @registration })
   end
   def create 
     puts "create"
