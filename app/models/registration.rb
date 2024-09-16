@@ -1,4 +1,8 @@
 class Registration < ApplicationRecord
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_PHONE_REGEX = /\A0\d{9,14}\z/
+
   validate :first_and_last_name_is_valid
   validate :first_and_last_name_presence
   validate :date_of_birth_and_gender_presence
@@ -7,6 +11,11 @@ class Registration < ApplicationRecord
 
   private
 
+  # def email_format
+  #   if email.present?
+      
+  #   end
+  # end
   def subject_presence
     if subject.blank?
       errors.add(:subject, "Subject should be selected")
@@ -21,9 +30,13 @@ class Registration < ApplicationRecord
     elsif email.blank?
       errors.add(:email, "Please fill your email")
       errors.add(:row3, "Please fill your email")
+    elsif !email.match?(VALID_EMAIL_REGEX)
+      errors.add(:email, "is not a valid email")
     elsif phone.blank?
       errors.add(:phone, "Please fill your phone number")
       errors.add(:row3, "Please fill your phone number")
+    elsif !phone.match?(VALID_PHONE_REGEX)
+      errors.add(:phone, "must start with 0 and be 10 to 15 digits long")
     end
   end
   def date_of_birth_and_gender_presence

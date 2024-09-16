@@ -28,15 +28,15 @@
     </div>
     <div class="row">
         <div class="field error-field hide-on-small-screen">
-            <% @registration.errors[:name].each do |message| %>
-                <div class="error-message" ><%= message %></div>
+            <% if @registration.errors[:first_name].any? %>
+                <div class="error-message"><%= @registration.errors[:first_name].first %></div>
             <% end %>
         </div>
     </div>
     <div class="row">
         <div class="field">
             <%= form.label :birthday, style: "display : block" %>
-            <%= form.date_field :dob ,class: "custom-field", max: Date.today.to_s%>
+            <%= form.date_field :dob ,class: "custom-field", max: 18.years.ago.to_date %>
         </div>
         <div class="field error-field show-on-small-screen">
                 <% @registration.errors[:dob].each do |message| %>
@@ -64,8 +64,8 @@
     </div>
     <div class="row">
         <div class="field error-field hide-on-small-screen">
-            <% @registration.errors[:row2].each do |message| %>
-                <div class="error-message" ><%= message %></div>
+            <% if @registration.errors[:row2].any? %>
+                <div class="error-message"><%= @registration.errors[:row2].first %></div>
             <% end %>
         </div>
     </div>
@@ -91,8 +91,8 @@
     </div>
     <div class="row">
         <div class="field error-field hide-on-small-screen">
-            <% @registration.errors[:row3].each do |message| %>
-                <div class="error-message" ><%= message %></div>
+            <% if @registration.errors[:row3].any? %>
+                <div class="error-message"><%= @registration.errors[:row3].first %></div>
             <% end %>
         </div>
     </div>
